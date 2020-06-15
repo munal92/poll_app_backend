@@ -11,6 +11,7 @@ router.get("/:id", async (req, res) => {
   try {
     Allpoll = await DB.getPollById(id);
     console.log("router ", Allpoll);
+    console.log("location_ip:", ip.address());
     if (Allpoll && Allpoll.id) {
       console.log("1");
       res.status(200).json(Allpoll);
