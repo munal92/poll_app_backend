@@ -29,7 +29,7 @@ router.post("/createpoll", async (req, res) => {
   const editedPoll = {
     poll_link: shortid.generate(),
     poll_question: nwPoll.poll_question,
-    location_ip: ip.address(),
+    location_ip: "00.000",
   };
   //console.log(editedPoll);
 
