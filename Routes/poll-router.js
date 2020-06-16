@@ -10,8 +10,8 @@ router.get("/:id", async (req, res) => {
 
   try {
     Allpoll = await DB.getPollById(id);
-    console.log("router ", Allpoll);
-    console.log("location_ip:", ip.address());
+    // console.log("router ", Allpoll);
+    //console.log("location_ip:", ip.address());
     if (Allpoll && Allpoll.id) {
       console.log("1");
       res.status(200).json(Allpoll);
@@ -35,7 +35,7 @@ router.post("/createpoll", async (req, res) => {
 
   try {
     Allpoll = await DB.addPoll(editedPoll);
-    console.log("new Poll req ", Allpoll);
+    // console.log("new Poll req ", Allpoll);
     if (Allpoll) {
       // console.log("1");
       res.status(200).json(Allpoll);
@@ -59,13 +59,28 @@ router.post("/createanswer", async (req, res) => {
 
   try {
     Allpoll = await DB.addPollAnswer(editedPoll);
-    console.log("new PollAns req ", Allpoll);
+    // console.log("new PollAns req ", Allpoll);
     if (Allpoll) {
       res.status(200).json(Allpoll);
     }
   } catch (err) {
     res.status(404).json({ error: "Couldnt add the answer ", err: err });
   }
+});
+
+router.put("/answer/:id", async (req, res) => {
+  const { id } = req.params; /// Poll Session id & question id
+
+  try {
+    Allpoll = await DB.updateAnswer(id);
+    // console.log("new PollAns req ", Allpoll);
+    if (Allpoll) {
+      res.status(200).json(Allpoll);
+    }
+  } catch (err) {
+    res.status(404).json({ error: "Couldnt update the answer ", err: err });
+  }
+  //console.log("ans id: ", id);
 });
 
 module.exports = router;
