@@ -47,9 +47,25 @@ async function addPollAnswer(nwPoll) {
   }
 }
 
+async function updateAnswer(id) {
+  try {
+    let poll = await db("poll_answers")
+      .where({ id: id })
+      .increment("answer_count", 1);
+
+    if (poll) {
+      return poll;
+    }
+  } catch (err) {
+    //console.error("cath ");
+    throw err;
+  }
+}
+
 module.exports = {
   getAllPoll,
   getPollById,
   addPoll,
   addPollAnswer,
+  updateAnswer,
 };
