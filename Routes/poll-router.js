@@ -6,11 +6,11 @@ const ip = require("ip");
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params; /// Poll Session id
-  let Allpoll;
 
+  console.log("get Poll ", id);
   try {
-    Allpoll = await DB.getPollById(id);
-    // console.log("router ", Allpoll);
+    const Allpoll = await DB.getPollById(id);
+
     //console.log("location_ip:", ip.address());
     if (Allpoll && Allpoll.id) {
       res.status(200).json(Allpoll);
@@ -29,7 +29,7 @@ router.post("/createpoll", async (req, res) => {
     poll_question: nwPoll.poll_question,
     location_ip: "00.000",
   };
-
+  console.log("create Poll ", id);
   try {
     Allpoll = await DB.addPoll(editedPoll);
     // console.log("new Poll req ", Allpoll);
@@ -54,7 +54,7 @@ router.post("/createanswer", async (req, res) => {
     order_id: nwPoll.order_id,
   };
 
-  // console.log(editedPoll);
+  console.log("createAnswer", editedPoll);
 
   try {
     Allpoll = await DB.addPollAnswer(editedPoll);
@@ -82,4 +82,18 @@ router.put("/answer/:id", async (req, res) => {
   //console.log("ans id: ", id);
 });
 
+router.get("/hepsi", async (req, res) => {
+  //const { id } = req.params; /// Poll Session id
+
+  try {
+    const Allpoll = await DB.getAllPoll();
+    console.log("AllPoll", Allpoll, Allpoll.id);
+    //console.log("location_ip:", ip.address());
+    if (Allpoll && Allpoll.id) {
+      res.status(200).json(Allpoll);
+    }
+  } catch (err) {
+    res.status(404).json({ error: "Couldnt find the poll id", err: err });
+  }
+});
 module.exports = router;
