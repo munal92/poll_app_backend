@@ -5,8 +5,9 @@ const cors = require("cors");
 const PollRouter = require("../Routes/poll-router.js");
 
 server.use(express.json());
-server.use(helmet());
 server.use(cors());
+server.use(helmet());
+
 server.use("/api/poll", PollRouter);
 
 server.get("/", (req, res) => {
