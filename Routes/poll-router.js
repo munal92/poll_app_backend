@@ -29,7 +29,7 @@ router.post("/createpoll", async (req, res) => {
     poll_question: nwPoll.poll_question,
     location_ip: "00.000",
   };
-  console.log("create Poll ", id);
+  //console.log("create Poll ", id);
   try {
     Allpoll = await DB.addPoll(editedPoll);
     // console.log("new Poll req ", Allpoll);
