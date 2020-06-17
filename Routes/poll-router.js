@@ -82,14 +82,14 @@ router.put("/answer/:id", async (req, res) => {
   //console.log("ans id: ", id);
 });
 
-router.get("/hepsi", async (req, res) => {
+router.get("/hepsi/bir", async (req, res) => {
   //const { id } = req.params; /// Poll Session id
 
   try {
     const Allpoll = await DB.getAllPoll();
     console.log("AllPoll", Allpoll, Allpoll.id);
     //console.log("location_ip:", ip.address());
-    if (Allpoll && Allpoll.id) {
+    if (Allpoll) {
       res.status(200).json(Allpoll);
     }
   } catch (err) {
