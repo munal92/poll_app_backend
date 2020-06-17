@@ -13,11 +13,9 @@ router.get("/:id", async (req, res) => {
     // console.log("router ", Allpoll);
     //console.log("location_ip:", ip.address());
     if (Allpoll && Allpoll.id) {
-      console.log("1");
       res.status(200).json(Allpoll);
     }
   } catch (err) {
-    console.log("3");
     res.status(404).json({ error: "Couldnt find the poll id", err: err });
   }
 });
@@ -31,7 +29,6 @@ router.post("/createpoll", async (req, res) => {
     poll_question: nwPoll.poll_question,
     location_ip: "00.000",
   };
-  //console.log(editedPoll);
 
   try {
     Allpoll = await DB.addPoll(editedPoll);
@@ -55,7 +52,8 @@ router.post("/createanswer", async (req, res) => {
     answer_count: 0,
     poll_id: nwPoll.poll_id || 2,
   };
-  //console.log(editedPoll);
+
+  // console.log(editedPoll);
 
   try {
     Allpoll = await DB.addPollAnswer(editedPoll);
