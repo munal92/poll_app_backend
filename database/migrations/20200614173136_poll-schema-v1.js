@@ -10,6 +10,7 @@ exports.up = function (knex) {
       tbl.increments("id");
       tbl.string("poll_answer", 256).notNullable();
       tbl.integer("answer_count").defaultTo(1);
+      tbl.integer("order_id").defaultTo(0);
       tbl
         .integer("poll_id")
         .notNullable()

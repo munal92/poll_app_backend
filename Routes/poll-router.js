@@ -51,6 +51,7 @@ router.post("/createanswer", async (req, res) => {
     poll_answer: nwPoll.poll_answer,
     answer_count: 0,
     poll_id: nwPoll.poll_id || 2,
+    order_id: nwPoll.order_id,
   };
 
   // console.log(editedPoll);
