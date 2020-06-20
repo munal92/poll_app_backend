@@ -21,8 +21,8 @@ async function getPollById(id) {
 
 function findPollById(id) {
   // console.log("ekledi", nwPoll);
-  const [id2] = id;
-  return db("poll_detail").where({ id: id2 });
+
+  return db("poll_detail").where({ id: id });
 }
 
 function addPoll(nwPoll) {
@@ -30,7 +30,7 @@ function addPoll(nwPoll) {
   return db("poll_detail")
     .insert(nwPoll)
     .then((res) => {
-      return findPollById(res);
+      return findPollById(res[0]);
       // .then((a) => {
       //   return a;
       // });
