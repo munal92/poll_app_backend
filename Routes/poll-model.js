@@ -38,7 +38,7 @@ function addPoll(nwPoll) {
 
 function addPollAnswer(nwPoll) {
   //console.log(id);
-  return db("poll_detail").insert(nwPoll);
+  return db("poll_answers").insert(nwPoll);
   // try {
   //   let [poll] = await db("poll_answers").insert(nwPoll);
   //   if (poll) {
