@@ -20,15 +20,16 @@ async function getPollById(id) {
 }
 
 async function addPoll(nwPoll) {
-  //console.log(id);
+  console.log("ekledi", nwPoll);
   try {
     let [poll] = await db("poll_detail").insert(nwPoll);
     if (poll) {
+      console.log("ekledi poll", nwPoll);
       nwPoll.id = poll;
       return nwPoll;
     }
   } catch (err) {
-    //console.error("cath ");
+    console.error("error add ic ", err);
     throw err;
   }
 }
