@@ -60,7 +60,7 @@ router.post("/createanswer", async (req, res) => {
     Allpoll = await DB.addPollAnswer(editedPoll);
     // console.log("new PollAns req ", Allpoll);
     if (Allpoll) {
-      res.status(200).json(Allpoll);
+      res.status(200).json(Allpoll[0]);
     }
   } catch (err) {
     res.status(404).json({ error: "Couldnt add the answer ", err: err });
