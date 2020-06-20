@@ -1,12 +1,14 @@
-// Update with your config settings.
+require("dotenv").config();
+
+const pgConnection =
+  process.env.DATABASE_URL || "postgresql://postgres@localhost/poll";
 
 module.exports = {
-
   development: {
-    client: 'sqlite3',
+    client: "sqlite3",
     useNullAsDefault: true,
     connection: {
-      filename: './database/poll.db3'
+      filename: "./database/poll.db3",
     },
     pool: {
       afterCreate: (conn, done) => {
@@ -21,16 +23,15 @@ module.exports = {
     },
   },
   production: {
-    client: "sqlite3",
+    client: "pg",
+    connection: pgConnection,
     useNullAsDefault: true,
-    connection: {
-      filename: './database/poll.db3'
-    },
+
     pool: {
-      afterCreate: (conn, done) => {
-        conn.run("PRAGMA foreign_keys = ON", done);
-      },
+      min: 2,
+      max: 10,
     },
+
     migrations: {
       directory: "./database/migrations",
     },
