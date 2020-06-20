@@ -30,7 +30,7 @@ function addPoll(nwPoll) {
   return db("poll_detail")
     .insert(nwPoll)
     .then((res) => {
-      return findPollById(res[0]);
+      return findPollById(res);
       // .then((a) => {
       //   return a;
       // });
