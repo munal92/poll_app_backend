@@ -25,7 +25,7 @@ module.exports = {
   production: {
     client: "pg",
     connection: pgConnection,
-    useNullAsDefault: true,
+    // useNullAsDefault: true,
 
     pool: {
       min: 2,
