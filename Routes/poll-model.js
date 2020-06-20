@@ -19,9 +19,10 @@ async function getPollById(id) {
   }
 }
 
-function findPollById([id]) {
+function findPollById(id) {
   // console.log("ekledi", nwPoll);
-  return db("poll_detail").where({ id: id });
+  const [id2] = id;
+  return db("poll_detail").where({ id: id2 });
 }
 
 function addPoll(nwPoll) {
