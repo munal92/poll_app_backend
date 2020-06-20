@@ -46,16 +46,26 @@ function addPoll(nwPoll) {
   // }
 }
 
+function findAnswerById(id) {
+  console.log("id", id);
+  return db("poll_answers").where("id", id);
+}
+
 function addPollAnswer(nwPoll) {
   //console.log(id);
   return db("poll_answers")
     .insert(nwPoll)
+    .returning("id")
     .then(([res]) => {
-      return db("poll_answers").where({ id: res });
-      // .then((a) => {
-      //   return a;
-      // });
+      return findAnswerById(res);
     });
+
+  // return db("poll_detail")
+  // .insert(nwPoll)
+  // .returning("id")
+  // .then(([res]) => {
+  //   return findPollById(res);
+  // });
   // try {
   //   let [poll] = await db("poll_answers").insert(nwPoll);
   //   if (poll) {
@@ -90,4 +100,5 @@ module.exports = {
   addPollAnswer,
   updateAnswer,
   findPollById,
+  findAnswerById,
 };
