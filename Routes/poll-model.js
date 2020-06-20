@@ -36,18 +36,19 @@ function addPoll(nwPoll) {
   // }
 }
 
-async function addPollAnswer(nwPoll) {
+function addPollAnswer(nwPoll) {
   //console.log(id);
-  try {
-    let [poll] = await db("poll_answers").insert(nwPoll);
-    if (poll) {
-      nwPoll.id = poll;
-      return nwPoll;
-    }
-  } catch (err) {
-    //console.error("cath ");
-    throw err;
-  }
+  return db("poll_detail").insert(nwPoll);
+  // try {
+  //   let [poll] = await db("poll_answers").insert(nwPoll);
+  //   if (poll) {
+  //     nwPoll.id = poll;
+  //     return nwPoll;
+  //   }
+  // } catch (err) {
+  //   //console.error("cath ");
+  //   throw err;
+  // }
 }
 
 async function updateAnswer(id) {
