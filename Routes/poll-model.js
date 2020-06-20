@@ -20,7 +20,7 @@ async function getPollById(id) {
 }
 
 function findPollById(id) {
-  // console.log("ekledi", nwPoll);
+  console.log("ekledi find id", id);
 
   return db("poll_detail").where("id", id);
 }

@@ -31,11 +31,11 @@ router.post("/createpoll", async (req, res) => {
   };
   console.log("create Poll ", editedPoll);
   try {
-    [Allpoll] = await DB.addPoll(editedPoll);
+    Allpoll = await DB.addPoll(editedPoll);
     console.log("new Poll req ", Allpoll);
     if (Allpoll) {
       // console.log("1");
-      res.status(200).json(Allpoll);
+      res.status(200).json(Allpoll[0]);
     }
   } catch (err) {
     console.log(err);
