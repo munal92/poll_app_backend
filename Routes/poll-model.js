@@ -19,12 +19,17 @@ async function getPollById(id) {
   }
 }
 
+function findPollById([id]) {
+  // console.log("ekledi", nwPoll);
+  return db("poll_detail").where({ id: id });
+}
+
 function addPoll(nwPoll) {
   console.log("ekledi", nwPoll);
   return db("poll_detail")
     .insert(nwPoll)
-    .then(([res]) => {
-      return db("poll_detail").where({ id: res });
+    .then((res) => {
+      return findPollById(res);
       // .then((a) => {
       //   return a;
       // });
@@ -86,4 +91,5 @@ module.exports = {
   addPoll,
   addPollAnswer,
   updateAnswer,
+  findPollById,
 };
