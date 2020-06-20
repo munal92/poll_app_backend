@@ -21,7 +21,14 @@ async function getPollById(id) {
 
 function addPoll(nwPoll) {
   console.log("ekledi", nwPoll);
-  return db("poll_detail").insert(nwPoll);
+  return db("poll_detail")
+    .insert(nwPoll)
+    .then(([res]) => {
+      return db("poll_detail").where({ id: res });
+      // .then((a) => {
+      //   return a;
+      // });
+    });
 
   // try {
   //   let [poll] = await db("poll_detail").insert(nwPoll);
@@ -38,7 +45,14 @@ function addPoll(nwPoll) {
 
 function addPollAnswer(nwPoll) {
   //console.log(id);
-  return db("poll_answers").insert(nwPoll);
+  return db("poll_answers")
+    .insert(nwPoll)
+    .then(([res]) => {
+      return db("poll_answers").where({ id: res });
+      // .then((a) => {
+      //   return a;
+      // });
+    });
   // try {
   //   let [poll] = await db("poll_answers").insert(nwPoll);
   //   if (poll) {
