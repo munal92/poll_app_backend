@@ -1,0 +1,35 @@
+{
+  "name": "poll_add_backend",
+  "version": "1.0.0",
+  "description": "Create backend for PollADD Website",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munal92/poll_add_backend.git"
+  },
+  "author": "Mucteba Fatih Unal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/munal92/poll_add_backend/issues"
+  },
+  "homepage": "https://github.com/munal92/poll_add_backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "ip": "^1.1.5",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.1",
+    "knex-cleaner": "^1.3.0",
+    "shortid": "^2.2.15",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
