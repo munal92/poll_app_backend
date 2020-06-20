@@ -19,19 +19,21 @@ async function getPollById(id) {
   }
 }
 
-async function addPoll(nwPoll) {
+function addPoll(nwPoll) {
   console.log("ekledi", nwPoll);
-  try {
-    let [poll] = await db("poll_detail").insert(nwPoll);
-    if (poll) {
-      console.log("ekledi poll", nwPoll);
-      nwPoll.id = poll;
-      return nwPoll;
-    }
-  } catch (err) {
-    console.error("error add ic ", err);
-    throw err;
-  }
+  return db("poll_detail").insert({ nwPoll });
+
+  // try {
+  //   let [poll] = await db("poll_detail").insert(nwPoll);
+  //   if (poll) {
+  //     console.log("ekledi poll", nwPoll);
+  //     nwPoll.id = poll;
+  //     return nwPoll;
+  //   }
+  // } catch (err) {
+  //   console.error("error add ic ", err);
+  //   throw err;
+  // }
 }
 
 async function addPollAnswer(nwPoll) {
