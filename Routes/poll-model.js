@@ -21,7 +21,7 @@ async function getPollById(id) {
 
 function addPoll(nwPoll) {
   console.log("ekledi", nwPoll);
-  return db("poll_detail").insert({ nwPoll });
+  return db("poll_detail").insert(nwPoll);
 
   // try {
   //   let [poll] = await db("poll_detail").insert(nwPoll);
