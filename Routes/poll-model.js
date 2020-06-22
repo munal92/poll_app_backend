@@ -5,77 +5,41 @@ function getAllPoll() {
 }
 
 async function getPollById(id) {
-  //console.log(id);
-
   try {
     let [poll] = await db("poll_detail").where({ poll_link: id });
     let answers = await db("poll_answers").where({ poll_id: poll.id });
     poll.answers = answers;
-    // console.log("try ", poll);
+
     return poll;
   } catch (err) {
-    //console.error("cath ");
     throw err;
   }
 }
 
 function findPollById(id) {
-  console.log("id", id);
   return db("poll_detail").where("id", id);
 }
 
 function addPoll(nwPoll) {
-  console.log("ekledi", nwPoll);
   return db("poll_detail")
     .insert(nwPoll)
     .returning("id")
     .then(([res]) => {
       return findPollById(res);
     });
-
-  // try {
-  //   let [poll] = await db("poll_detail").insert(nwPoll);
-  //   if (poll) {
-  //     console.log("ekledi poll", nwPoll);
-  //     nwPoll.id = poll;
-  //     return nwPoll;
-  //   }
-  // } catch (err) {
-  //   console.error("error add ic ", err);
-  //   throw err;
-  // }
 }
 
 function findAnswerById(id) {
-  console.log("id", id);
   return db("poll_answers").where("id", id);
 }
 
 function addPollAnswer(nwPoll) {
-  //console.log(id);
   return db("poll_answers")
     .insert(nwPoll)
     .returning("id")
     .then(([res]) => {
       return findAnswerById(res);
     });
-
-  // return db("poll_detail")
-  // .insert(nwPoll)
-  // .returning("id")
-  // .then(([res]) => {
-  //   return findPollById(res);
-  // });
-  // try {
-  //   let [poll] = await db("poll_answers").insert(nwPoll);
-  //   if (poll) {
-  //     nwPoll.id = poll;
-  //     return nwPoll;
-  //   }
-  // } catch (err) {
-  //   //console.error("cath ");
-  //   throw err;
-  // }
 }
 
 async function updateAnswer(id) {
@@ -88,7 +52,6 @@ async function updateAnswer(id) {
       return poll;
     }
   } catch (err) {
-    //console.error("cath ");
     throw err;
   }
 }
