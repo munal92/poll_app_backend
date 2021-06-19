@@ -1,7 +1,7 @@
 {
   "name": "poll_add_backend",
   "version": "1.0.0",
-  "description": "Create backend for PollADD Website",
+  "description": "Create backend for PollAPP Website",
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
