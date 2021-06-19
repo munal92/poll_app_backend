@@ -26,7 +26,9 @@ module.exports = {
     client: "pg",
     connection: pgConnection,
     // useNullAsDefault: true,
-
+    ssl: {
+      rejectUnauthorized: false,
+    },
     pool: {
       min: 2,
       max: 10,
